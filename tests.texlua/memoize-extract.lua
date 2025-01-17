@@ -21,14 +21,14 @@
 -- local VERSION = '2025/01/17 v1.4.1' -- TODO(all)
 
 -- libraries already available due to the use of texlua
-local lfs = require"lfs"
+local lfs = require"lfs" -- use require to silence the lsp TODO fix this differently
 -- lfs:
 --  lua-filesystem: used for checking/creating/deleting files/directories
 --  see https://lunarmodules.github.io/luafilesystem/manual.html#reference
 --  and https://texdoc.org/serve/LuaTeX/0
 --
 -- pdfe:
-local pdfe = require"pdfe"
+local pdfe = require"pdfe" -- use require to silence the lsp TODO fix this differently
 --  interface to pdf files: used to get information about a pdf file
 --  see https://texdoc.org/serve/LuaTeX/0
 
