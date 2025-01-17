@@ -1,10 +1,10 @@
 .PHONY: texlua luatex clean
 
 clean:
-	-$(RM) -r mmz *.aux *.log *.pdf
+	-$(RM) -r mmz *.aux *.log main.pdf
 
 texlua:
 	texlua memoize-extract.lua
 
 luatex:
-	lualatex main.tex
+	TEXMFCNF=".:" lualatex main.tex

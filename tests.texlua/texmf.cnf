@@ -1,0 +1,14 @@
+shell_escape_commands = \
+bibtex,bibtex8,\
+extractbb,\
+gregorio,\
+kpsewhich,\
+l3sys-query,\
+makeindex,\
+memoize-extract.pl,\
+memoize-extract.py,\
+repstopdf,\
+r-mpost,\
+texosquery-jre8,\
+rungs,\
+% added rungs to the list
