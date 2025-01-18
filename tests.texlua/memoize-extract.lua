@@ -32,12 +32,28 @@ local pdfe = require"pdfe" -- use require to silence the lsp TODO fix this diffe
 --  interface to pdf files: used to get information about a pdf file
 --  see https://texdoc.org/serve/LuaTeX/0
 
-if not lfs.isdir("mmz") then
-	assert(lfs.mkdir("mmz"))
+local kpse.set_program_name("kpsewhich")
+-- for testing
+local mmzdir = "mmz"
+local pdffile = "testing-source.pdf"
+
+local escape = kpse.var_value("shell_escape")
+if escape ~= "t" and escape ~= "p" then
+  error("No permission to extract.")
+end
+
+if kpse.out_name_ok(mmzdir) and not lfs.isdir(mmzdir) then
+	assert(lfs.mkdir(mmzdir))
+else
+  error("Writing to " .. mmzdir .. " not permitted.")
 end
 
 local pages = {}
-local pdf = pdfe.open("testing-source.pdf")
+if kpse.in_name_ok(pdffile) then
+  local pdf = pdfe.open(pdffile)
+else
+  error("Opening " .. pdffile .. " not permitted.")
+end
 for p in ("extract 1 extract 2 extract 4"):gmatch("%d+") do
 	local p = assert(tonumber(p))
 	local page = pdfe.getpage(pdf, p)
